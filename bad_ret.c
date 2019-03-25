@@ -57,13 +57,37 @@ int find_num_string(char* outputstr,char *inputstr) {
 
 
 
+
+
+void reverse(char *p) {
+
+    int length=strlen(p);
+    char *p1=p;
+    char *p2=p+length-1;
+    while (p1<p2){
+        char c=*p1;
+        *p1=*p2;
+        *p2=c;
+        ++p1;
+        --p2;
+    }
+}
+
+
 int main(int argc,char*argv[]) {
 
 
-char strings[]="abc1234567890f55b55123";
-char *p=(char*)malloc(strlen(strings)+1);
-int cont=find_num_string(p,strings);
-printf("%s\n numbers=%d",p,cont);
+    char strings[] = "abc1234567890f55b55123";
+    char *p = (char *) malloc(strlen(strings) + 1);
+    int cont = find_num_string(p, strings);
+    printf("%s\n numbers=%d\n", p, cont);
+
+    char p2[]= "12345678";
+    reverse(p2);
+    printf("p2=%s\n", p2);
+
+    int a[10];
+
 
 }
 
