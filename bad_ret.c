@@ -12,8 +12,8 @@
 #include <ctype.h>
 
 char * bad_ret(){
-    //char *p="user-name-x";
-    char p[]="user-name-x";
+    char *p="user-name-x";
+    //char p[]="user-name-x";
     printf("%p\n",p);
     return  p;
 }
