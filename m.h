@@ -16,6 +16,7 @@
 #include <strings.h>
 #include <errno.h>
 #include <pthread.h>
+#include <stdlib.h>
 #include <unistd.h>
 
 #endif //TCP_M_H
