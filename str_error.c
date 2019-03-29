@@ -49,7 +49,7 @@ void print_file_info(char *file) {
     printf("ret=%d\n", ret);
     time_t time1 = time(0);
     long t1 = buf.st_ctime;
-    printf("t1=%d\n", t1);
+    printf("t1=%ld\n", t1);
 
     printf("文件创建时间: %s", ctime(&buf.st_ctime));
     printf("访问日期: %s", ctime(&buf.st_atime));
@@ -71,6 +71,7 @@ int main(int argc, char **argv) {
 
     // file_info("./t.log");
     print_file_info("./tcp");
+
 
 }
 
