@@ -36,7 +36,7 @@ int main(int argc,char*argv[]) {
         return result;
     }
         char to[20];
-        int len = 20;
+        int len = 10;
         memset(to, 0, 20);
 
         hash_get(&pHash, key, strlen(key) + 1, to, &len);

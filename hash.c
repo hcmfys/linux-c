@@ -1,10 +1,4 @@
-/**
-* Copyright (C) 2008 Happy Fish / YuQing
-*
-* FastDFS may be copied only under the terms of the GNU General
-* Public License V3, which may be found in the FastDFS source kit.
-* Please visit the FastDFS Home Page http://www.csource.org/ for more detail.
-**/
+
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -698,10 +692,12 @@ int64_t hash_inc_value(const HashData *old_data, const int inc,
         } else {
             n = inc;
         }
-        *new_value_len = sprintf(new_value, "%"PRId64, n);
+        *new_value_len = sprintf(new_value, "%"
+                PRId64, n);
     } else {
         n = inc;
-        *new_value_len = sprintf(new_value, "%"PRId64, n);
+        *new_value_len = sprintf(new_value, "%"
+                PRId64, n);
     }
 
     return n;
