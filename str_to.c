@@ -6,7 +6,13 @@
 #include "m.h"
 
 
-int  main(int argc,char* argv[]) {
+double my_sqrt(double x) {
+    assert(x >= 0.0);
+    return sqrt(x);
+}
+
+
+int main(int argc, char *argv[]) {
 
 
     char msg[] = "java c++ php";
@@ -18,15 +24,16 @@ int  main(int argc,char* argv[]) {
         printf("%s\n", t);
     }
 
-    char *nums="2134454.67fsfv";
+    char *nums = "2134454.67fsfv";
     char *end;
-    long s=strtol(nums,NULL,10);
-    double  d=strtod("1235.6897hvg",NULL);
+    long s = strtol(nums, NULL, 10);
+    double d = strtod("1235.6897hvg", NULL);
 
-    printf("%ld -- %f\n",s,d);
+    printf("%ld -- %f\n", s, d);
 
-    char * a=strpbrk("jvascfrtp1234","cf3ffc");
-    printf("%s\n",a);
+    char *a = strpbrk("jvascfrtp1234", "cf3ffc");
+    printf("%s\n", a);
+    my_sqrt(-0.6);
     return 0;
 
 }
