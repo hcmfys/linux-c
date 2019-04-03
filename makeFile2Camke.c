@@ -7,12 +7,13 @@
 #include <ctype.h>
 #include <string.h>
 #include <stdlib.h>
+
 #define  bool int
 #define  true 1
 #define false 0
 
 
-int get_line(char *buff,int size,FILE *f ) {
+int get_line(char *buff, int size, FILE *f) {
     char *p = buff;
     while (1) {
         int c = getc(f);
@@ -22,37 +23,38 @@ int get_line(char *buff,int size,FILE *f ) {
         if (c == -1) {
             return c;
         }
-        if (c == '\r'  ||c=='\n') {
+        if (c == '\r' || c == '\n') {
             break;
         }
-       *p=c;
+        *p = c;
         p++;
     }
-    *p='\0';
+    *p = '\0';
     return p - buff;
 }
 
 
-bool index_of( char **data_list,size_t length,  char * data) {
-    char **p=data_list;
-    size_t  n=length;
-    while(n) {
-        if( strcmp(*p,data)==0) {
-            return  true;
+bool index_of(char **data_list, size_t length, char *data) {
+    char **p = data_list;
+    size_t n = length;
+    while (n) {
+        if (strcmp(*p, data) == 0) {
+            return true;
         }
         n--;
         p++;
     }
-    return  false;
+    return false;
 
 }
+
 /**
  *
  * @param file_path
  * @param source_list
  * @param length
  */
-void read_makefile(char **data_list,char *file_path) {
+void read_makefile( char *file_path,char **data_list,size_t *size) {
     char **p_data = data_list;
     FILE *f = fopen(file_path, "r");
     if (f) {
@@ -78,13 +80,14 @@ void read_makefile(char **data_list,char *file_path) {
             }
         }
         fclose(f);
-    }else{
-        printf("%s no file exists\n",file_path);
+        *size= p_data-data_list;
+    } else {
+        printf("%s no file exists\n", file_path);
     }
-    size_t len=p_data-data_list;
-    char **pp=data_list;
-   while(len--){
-       char *t=*pp;
+    size_t len = size;
+    char **pp = data_list;
+    while (len--) {
+        char *t = *pp;
         printf("%s\n", t);
         pp++;
         free(t);
@@ -92,8 +95,9 @@ void read_makefile(char **data_list,char *file_path) {
 }
 
 int main(int argc, char *argv[]) {
-    char* data_list[1024];
+    char *data_list[1024];
+    size_t size=0;
     //D:\nginx-1.15.10\objs
-    read_makefile(data_list,"D:/nginx-1.15.10/objs/Makefile");
+    read_makefile("D:/nginx-1.15.10/objs/Makefile",data_list, &size);
 
 }
