@@ -52,8 +52,7 @@ bool index_of( char **data_list,size_t length,  char * data) {
  * @param source_list
  * @param length
  */
-void read_makefile(char *file_path,char **source_list,size_t length ) {
-    char *data_list[1024];
+void read_makefile(char **data_list,char *file_path) {
     char **p_data = data_list;
     FILE *f = fopen(file_path, "r");
     if (f) {
@@ -85,14 +84,16 @@ void read_makefile(char *file_path,char **source_list,size_t length ) {
     size_t len=p_data-data_list;
     char **pp=data_list;
    while(len--){
-        printf(" %d--%s\n",len, *pp++);
-        free(*pp);
+       char *t=*pp;
+        printf("%s\n", t);
+        pp++;
+        free(t);
     }
 }
 
 int main(int argc, char *argv[]) {
     char* data_list[1024];
     //D:\nginx-1.15.10\objs
-    read_makefile("D:/nginx-1.15.10/objs/Makefile",data_list,1024);
+    read_makefile(data_list,"D:/nginx-1.15.10/objs/Makefile");
 
 }
